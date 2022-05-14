@@ -1,12 +1,27 @@
 {
   "Actor": {
     "types": [
-      "character"
+      "character",
+      "npc"
     ],
-    "templates": {},
+    "templates": {
+      "base": {
+        "health": {
+          "value": 0,
+          "min": 0,
+          "max": 3
+        },
+        "dificulty": {
+          "value": 0,
+          "min": 0,
+          "max": 4
+        },
+        "biography": ""
+      }
+    },
     "character": {
       "id": {
-        "callMe": "",
+        "callMe": [],
         "heritage": "",
         "homeland": "",
         "workplace": "",
@@ -140,10 +155,27 @@
           "backpack": ""
         }
       }
+    },
+    "npc": {
+      "templates": [
+        "base"
+      ],
+      "name": "",
+      "description": "",
+      "dificulty": 0,
+      "health": 0
     }
   },
   "Item": {
-    "types": [],
-    "templates": {}
+    "types": ["skill"],
+    "templates": {
+      "base": {
+        "description": ""
+      }    
+    },
+    "skill": {
+      "templates": ["base"],
+      "type-field": ""
+    }
   }
 }

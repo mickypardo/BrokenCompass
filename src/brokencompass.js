@@ -2,6 +2,8 @@ import "./scss/styles.scss";
 
 import { BCActor } from "./module/actor/BCActor";
 import { BCActorSheet } from "./module/actor/sheets/BCActorSheet";
+import { BCSkill } from "./module/item/BCSkill";
+import { BCSkillSheet } from "./module/item/sheets/BCSkillSheet";
 import "./module/chat/chat-hooks";
 
 /* -------------------------------- */
@@ -12,6 +14,7 @@ Hooks.once("init", async () => {
 
   // Initialise config
   CONFIG.Actor.entityClass = BCActor;
+  CONFIG.Item.entityClass = BCSkill;
 
   // Preload all needed templates
   // await TemplatePreloader.preloadHandlebarsTemplates();
@@ -19,12 +22,18 @@ Hooks.once("init", async () => {
 
   // Unregister Core sheets
   Actors.unregisterSheet("core", ActorSheet);
+  Item.unregisterSheet("core", ItemSheet);
 
   // Register BrokenCompass actor sheets
   Actors.registerSheet("brokencompass", BCActorSheet, {
     types: ["character"],
     makeDefault: true,
   });
+  // Register BrokenCompass item sheets
+  Item.registerSheet("brokencompass", BCSkillSheet, {
+    types: ["skill"],
+    makeDefault: true
+  })
 });
 
 // Hooks.on("renderChatMessage", (app, html, data) => {});
